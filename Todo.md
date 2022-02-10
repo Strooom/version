@@ -1,0 +1,1 @@
+Don't give access to the version string itself, but rather to a const pointer to const char to it

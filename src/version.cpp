@@ -1,5 +1,11 @@
-#include "Arduino.h"
+#include "strl.h"
 #include "version.h"
+
+
+
+// ####################################
+// ### version                      ###
+// ####################################
 
 version::version(const char* aVersion) {
     set(aVersion);
@@ -10,6 +16,10 @@ void version::set(const char* aVersion) {
     convertUnderscoresToDots();
 }
 
+const char* version::get() {
+    return theVersion;
+}
+
 void version::convertUnderscoresToDots() {
     char* foundPosition = strchr(theVersion, '_');
     while (foundPosition) {
@@ -18,7 +28,7 @@ void version::convertUnderscoresToDots() {
     }
 }
 
-bool version::isValid(const char* aVersion) const {
+bool version::isValid(const char* aVersion) {
     return (strnlen(aVersion, versionLength) > 0);
 }
 
